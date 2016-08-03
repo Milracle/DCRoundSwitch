@@ -345,7 +345,7 @@
 	on = newOn;
 	self.ignoreTap = YES;
 
-	[CATransaction setAnimationDuration:0.014];
+//	[CATransaction setAnimationDuration:0.014];
 	self.knobLayer.gripped = YES;
 
 	// setup by turning off the manual clipping of the toggleLayer and setting up a layer mask.
@@ -355,12 +355,12 @@
 	// retain all our targets so they don't disappear before the actions get sent at the end of the animation
 	[[self allTargets] makeObjectsPerformSelector:@selector(retain)];
 
-	[CATransaction setCompletionBlock:^{
-		[CATransaction begin];
-		if (!animated)
-			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-		else
-			[CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
+//	[CATransaction setCompletionBlock:^{
+//		[CATransaction begin];
+//		if (!animated)
+//			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+//		else
+//			[CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
 
 		CGFloat minToggleX = -self.toggleLayer.frame.size.width / 2.0 + self.toggleLayer.frame.size.height / 2.0;
 		CGFloat maxToggleX = -1;
@@ -391,7 +391,7 @@
 
 		self.knobLayer.gripped = NO;
 
-		[CATransaction setCompletionBlock:^{
+//		[CATransaction setCompletionBlock:^{
 			[self removeLayerMask];
 			self.ignoreTap = NO;
 
@@ -400,10 +400,10 @@
 				[self sendActionsForControlEvents:UIControlEventValueChanged];
 
 			[[self allTargets] makeObjectsPerformSelector:@selector(release)];
-		}];
+//		}];
 
-		[CATransaction commit];
-	}];
+//		[CATransaction commit];
+//	}];
 }
 
 - (void)setOnTintColor:(UIColor *)anOnTintColor
